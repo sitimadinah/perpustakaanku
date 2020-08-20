@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Author = require('../models/author')
+const e = require('express')
 
 //All authors Route
 router.get('/', async (req, res) => {
@@ -35,7 +36,7 @@ router.post('/', async (req, res) => {
         const newAuthor = await author.save()
         // res.redirect(`authors/${newAuthor.id}`)
         res.redirect(`authors`)
-    } catch {
+    } catch (err) {
          res.render('authors/new', {
              author: author,
              errorMessage: 'error dalam membuat author'
